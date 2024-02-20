@@ -1,0 +1,157 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.loginContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: middle;
+  height: 100vh;
+  flex-direction: column;
+
+  .status {
+    display: flex;
+  }
+
+  .login {
+    display: flex;
+    flex-direction: column;
+    width: 400px;
+    align-items: center;
+
+    .usernameInput {
+      width: 300px;
+      margin: 2px;
+    }
+
+    .passwordInput {
+      width: 300px;
+      margin: 2px;
+    }
+
+    .submitBtn {
+      width: 100px;
+      margin: 2px;
+    }
+  }
+}
+
+.home {
+  display: flex;
+  flex-direction: column;
+
+  .section {
+    .sectionHeader {
+      color: green;
+    }
+
+    .sectionBody {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+
+      .section-box {
+        display: flex;
+        flex-direction: column;
+        border: solid green 1px;
+        padding: 10px;
+
+        .section-box-author {
+          display: block;
+        }
+
+        .section-box-timestamp {
+          display: block;
+        }
+      }
+    }
+  }
+}
+
+.poll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .authorName {
+    font-size: xx-large;
+    margin-bottom: 27px;
+  }
+
+  .options {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 40px;
+
+    .option {
+      border-color: green;
+      border-width: 2px;
+      border-style: solid;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 8px;
+
+      .text {
+        margin-bottom: 10px;
+      }
+    }
+
+    .voted {
+      background-color: lightgreen;
+    }
+  }
+}
+
+.leaderboard {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+
+  .section {
+    display: table;
+    width: 100%;
+
+    .col {
+      display: table-cell;
+      border-style: solid;
+      flex: 1; /* distributes space on the line equally among items */
+    }
+  }
+
+  section > * {
+    display: table-row;
+  }
+
+  .header {
+    display: flex;
+    background-color: aquamarine;
+  }
+
+  .row {
+    display: flex;
+  }
+}
+
+.newPoll {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .poll {
+    display: flex;
+    gap: 10px;
+  }
+}
