@@ -51,6 +51,12 @@ code {
   display: flex;
   flex-direction: column;
 
+  .questionStateDisplayToggle{
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+  }
+
   .section {
     .sectionHeader {
       color: green;
@@ -152,6 +158,22 @@ code {
 
   .poll {
     display: flex;
+    gap: 10px;
+  }
+}
+
+.menu-header {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px;
+  background-color: lightgreen;
+  margin-bottom: 100px;
+
+  .nav {
+    display: flex;
+    flex-direction: row;
     gap: 10px;
   }
 }

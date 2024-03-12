@@ -1,13 +1,22 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { useSaveQuestionMutation } from "../api/api";
 import { authedUserSelector } from "../reducers/authedUser";
 import { useAppSelector } from "../store";
+import { useNavigate } from "react-router-dom";
 
 function NewPoll() {
   const [optionOneText, setOptionOneText] = useState<string>("");
   const [optionTwoText, setOptionTwoText] = useState<string>("");
   const { id: authedUserId } = useAppSelector(authedUserSelector);
   const [saveQuestion, saveQuestionResult] = useSaveQuestionMutation();
+
+  const navigate = useNavigate();
+
+  useEffect(()=> {
+    if(saveQuestionResult.isSuccess) {
+      navigate('/');
+    }
+  }, [saveQuestionResult.isSuccess]);
 
   const createPoll = () => {
     if (optionOneText && optionTwoText && authedUserId) {

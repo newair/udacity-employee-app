@@ -1,10 +1,10 @@
 import { render } from "@testing-library/react";
 import configureStore from "redux-mock-store";
-import Login from "../Login";
+import Login from "../../components/Login";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 
-describe("Testing snapshots", () => {
+describe("Testing snapshots for Logn", () => {
   it("test login button", () => {
     const initialState = {
       authedUserId: "abc",

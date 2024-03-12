@@ -33,6 +33,8 @@ export function makeServer({ environment = "test" } = {}) {
 
       this.post("login", async (schema, request) => {
         const user = await _login(JSON.parse(request.requestBody));
+
+        console.log('user', user);
         return user;
       })
 

@@ -11,32 +11,22 @@ interface QuestionCategories {
 }
 
 function Home() {
-  const {
-    data: questions,
-    error,
-    isError,
-    isFetching,
-    isSuccess,
-  } = useGetQuestionsQuery();
+  const { data: questions, error, isError, isSuccess } = useGetQuestionsQuery();
 
   const { id: authedUserId } = useAppSelector(authedUserSelector);
 
   const [categorizedQuestions, setCategorizedQuestions] =
     useState<QuestionCategories>();
 
-  console.log({
-    questions,
-    authedUserId,
-    error,
-    isError,
-    isFetching,
-    isSuccess,
-  });
   useEffect(() => {
     const answeredQuestions: Array<Question> = [];
     const unAnsweredQuestions: Array<Question> = [];
 
-    if (authedUserId && questions) {
+    if (isError) {
+      alert("Error fetching questions");
+    }
+
+    if (authedUserId && isSuccess && questions) {
       Object.values(questions)?.forEach((question: Question) => {
         if (
           question.optionOne.votes.includes(authedUserId) ||
@@ -53,18 +43,41 @@ function Home() {
         unAnsweredQuestions,
       });
     }
-  }, [questions, authedUserId]);
+  }, [questions, authedUserId, isSuccess, isError, error]);
+
+  const [showNewQuestions, setShowNewQuestions] = useState<boolean>(true);
+
+  const toggleChange = () => {
+    setShowNewQuestions(!showNewQuestions);
+  };
 
   return categorizedQuestions ? (
     <div className="home">
-      <Section
-        title="New Questions"
-        questions={categorizedQuestions.unAnsweredQuestions}
-      ></Section>
-      <Section
-        title="Done"
-        questions={categorizedQuestions.answeredQuestions}
-      ></Section>
+      <div className="questionStateDisplayToggle">
+        <label className="label" htmlFor="toggleNewQuestions">
+          Show New Questions
+        </label>
+        <input
+          className="checkBox"
+          type="checkbox"
+          id="toggleNewQuestions"
+          onChange={toggleChange}
+          name="show New Questions"
+          checked={showNewQuestions}
+        />
+      </div>
+      {showNewQuestions && (
+        <Section
+          title="New Questions"
+          questions={categorizedQuestions.unAnsweredQuestions}
+        ></Section>
+      )}
+      {!showNewQuestions && (
+        <Section
+          title="Done"
+          questions={categorizedQuestions.answeredQuestions}
+        ></Section>
+      )}
     </div>
   ) : (
     <></>

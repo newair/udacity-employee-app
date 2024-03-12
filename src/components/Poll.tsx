@@ -1,6 +1,6 @@
 import { Question } from "../types";
 import { useEffect, useMemo, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import avatar from "../assets/images/avatar1.png"; // Tell webpack this JS file uses this image
 import {
   useGetQuestionsQuery,
@@ -58,6 +58,8 @@ function Poll() {
     ).toFixed(2);
   }, [optionOneVoteCount, optionTwoVoteCount]);
 
+  const navigate = useNavigate();
+
   useEffect(() => {
     if (
       qid &&
@@ -66,11 +68,16 @@ function Poll() {
       users &&
       Object.keys(users).length
     ) {
+
+      if (!(qid in questions)) {
+        navigate('/not-found');
+      }
+
       const question = questions[qid];
       const author = question?.author;
       const user = users[author];
 
-      setPoll({ author, avatarUrl: user.avatarURL, question });
+      setPoll({ author, avatarUrl: user?.avatarURL, question });
     }
   }, [questions, qid, users]);
 

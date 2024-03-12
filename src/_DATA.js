@@ -144,13 +144,13 @@ export default function getIntialData() {
 
 export function _getUsers () {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({...users}), 1000)
+    setTimeout(() => resolve({...users}), 100)
   })
 }
 
 export function _getQuestions () {
   return new Promise((resolve) => {
-    setTimeout(() => resolve({...questions}), 1000)
+    setTimeout(() => resolve({...questions}), 100)
   })
 }
 

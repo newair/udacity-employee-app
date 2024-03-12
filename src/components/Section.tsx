@@ -18,7 +18,7 @@ function Section({
       <h1 className="sectionHeader">{title}</h1>
       <div className="sectionBody">
         {questions
-          .sort((a, b) => a.timestamp - b.timestamp)
+          .sort((a, b) => b.timestamp-a.timestamp)
           ?.map((question) => (
             <div
               className="section-box"

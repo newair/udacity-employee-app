@@ -28,7 +28,7 @@ export default function Login() {
 
   useEffect(() => {
     if (isLoggedIn) {
-      dispatch(setAuthedUser({ id: data?.id }));
+      dispatch(setAuthedUser({ id: data?.id, name: data?.name}));
       const redirectTo = new URLSearchParams(location.search).get("redirectTo");
       navigate(!redirectTo ? "/" : redirectTo);
     }

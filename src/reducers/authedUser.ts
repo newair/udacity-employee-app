@@ -8,14 +8,13 @@ export const authedUser = createSlice({
   initialState,
   reducers: {
     setAuthedUser: (state: AuthedUser, action: PayloadAction<AuthedUser>) => {
-      localStorage.setItem("authedUser", JSON.stringify(action.payload));
-      return { ...state, id: action.payload.id };
+      
+      console.log("action.payload", action.payload);
+      return { ...state, id: action.payload.id, name: action.payload.name};
     },
   },
 });
 export const authedReducer = authedUser.reducer;
 export const { setAuthedUser } = authedUser.actions;
 export const authedUserSelector = (state: RootState) =>
-  localStorage.getItem("authedUser")
-    ? JSON.parse(localStorage.getItem("authedUser") as string)
-    : state.authedUser;
+state.authedUser;

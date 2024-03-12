@@ -1,27 +1,24 @@
 import { Link } from "react-router-dom";
 import { authedUserSelector } from "../reducers/authedUser";
 import { useAppSelector } from "../store";
+import Profile from "./Profile";
 
 const Nav = () => {
   const { id: authedUserId } = useAppSelector(authedUserSelector);
 
   return authedUserId ? (
-    <nav className="nav">
-      <ul>
-        <li>
+    <div className="menu-header">
+      <div className="nav">
           <Link to="/">Home</Link>
-        </li>
-        <li>
           <Link to="/leaderboard">leaderboard</Link>
-        </li>
-        <li>
           <Link to="/add">new Poll</Link>
-        </li>
-        <li>
           <Link to="/login">Logout</Link>
-        </li>
-      </ul>
-    </nav>
+      </div>
+
+      <div className="profile">
+        <Profile />
+      </div>
+    </div>
   ) : (
     <></>
   );

@@ -36,6 +36,7 @@ export type State = {
 
 export type AuthedUser = {
   id?: string;
+  name?: string;
 };
 
 export type NewQuestion = {

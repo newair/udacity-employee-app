@@ -20,9 +20,9 @@ function App() {
             <Route path="/leaderboard" element={<LeaderBoard />} />
             <Route path="/question/:id" element={<Poll />} />
             <Route path="/add" element={<NewPoll />} />
-            <Route path="/not-found" element={<NotFound />} />
-            <Route path="*" element={<Navigate to="/not-found" />} />
           </Route>
+          <Route path="/not-found" element={<NotFound />} />
+          <Route path="*" element={<Navigate to="/not-found" replace={true} />} />
         </Routes>
       }
     </div>

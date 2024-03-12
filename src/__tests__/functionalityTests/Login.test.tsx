@@ -1,5 +1,5 @@
 import { fireEvent, render } from "@testing-library/react";
-import Login from "../Login";
+import Login from "../../components/Login";
 import { Provider } from "react-redux";
 import { BrowserRouter } from "react-router-dom";
 import thunk from "redux-thunk";
