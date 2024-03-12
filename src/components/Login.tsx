@@ -20,7 +20,7 @@ export default function Login() {
 
   const isLoggedIn = useMemo(() => {
     return isSuccess && !!data?.id;
-  }, [data?.id]);
+  }, [data?.id, isSuccess]);
 
   const isLoggedInFailed = useMemo(() => {
     return isError || (isSuccess && !data?.id);
@@ -32,7 +32,7 @@ export default function Login() {
       const redirectTo = new URLSearchParams(location.search).get("redirectTo");
       navigate(!redirectTo ? "/" : redirectTo);
     }
-  }, [data, dispatch, navigate, isSuccess, location.search]);
+  }, [data, dispatch, navigate, isSuccess, location.search, isLoggedIn]);
 
   const handleChange = (event: { target: { name: string; value: string } }) => {
     const { name, value } = event.target;

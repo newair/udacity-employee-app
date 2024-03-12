@@ -16,7 +16,7 @@ function NewPoll() {
     if(saveQuestionResult.isSuccess) {
       navigate('/');
     }
-  }, [saveQuestionResult.isSuccess]);
+  }, [saveQuestionResult.isSuccess, navigate]);
 
   const createPoll = () => {
     if (optionOneText && optionTwoText && authedUserId) {

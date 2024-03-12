@@ -79,7 +79,7 @@ function Poll() {
 
       setPoll({ author, avatarUrl: user?.avatarURL, question });
     }
-  }, [questions, qid, users]);
+  }, [questions, qid, users, navigate]);
 
   const [saveQuestionAnswer, { isError }] = useSaveQuestionAnswerMutation();
 
